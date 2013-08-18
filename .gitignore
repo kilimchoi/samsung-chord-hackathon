@@ -1,4 +1,4 @@
-# built application files
+#built application files
 *.apk
 *.ap_
 
@@ -18,4 +18,3 @@ gen/
 local.properties
 
 # Eclipse project files
-.project
