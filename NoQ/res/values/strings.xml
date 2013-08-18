@@ -3,31 +3,61 @@
 
     <string name="app_name">NoQ</string>
     <string name="title_reservation_detail">Reservation Detail</string>
-
-    
-    <string-array name="planets_array">
-        <item>Home</item>
-        <item>My Reservations</item>
-        <item>Nearby Restaurants</item>
-        <item>Favorites</item>
-        <item>Settings</item>
-    </string-array>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
-    
-    <!--  NoQ App Specific Strings -->
+
+    <!-- NoQ App Specific Strings -->
     <string name="title_noq">NoQ</string>
+    <string name="title_home">Home</string>
+    <string name="title_nearby_restaurants">Nearby Restaurants</string>
+    <string name="title_payments">Payments</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_favorites">Favorites</string>
     <string name="title_calendar">Calendar</string>
     <string name="title_date">Date</string>
     <string name="title_time">Time</string>
     <string name="title_reservation_form">Make Reservation</string>
-    <string name="title_my_reservations">My Reservations</string>
+    <string name="title_reservations">Reservations</string>
     <string name="title_number_of_guests">Number of Guests</string>
-    
-    <!--  Actions -->
+
+    <!-- Actions -->
     <string name="action_reservations">Reservations</string>
     <string name="action_make_reservation">Make Reservation</string>
 
+    <!-- Latitude, longitude format -->
+    <string name="latitude_longitude">%1$.8f, %2$.8f</string>
+
+    <!-- Nearby Feature -->
+    <string name="nearby_start_updates">Start Update</string>
+    <string name="nearby_stop_updates">Stop Update</string>
+    <string name="nearby_get_location">Get Location</string>
+    <string name="nearby_get_address">Get Address</string>
+    <string name="title_address">Address</string>
+    <string name="title_latlng">Lat/Long</string>
+
+    <!-- location ecxample strings -->
+    <string name="resolved">Error resolved. Please re-try operation.</string>
+    <string name="connected">Client connected</string>
+    <string name="no_resolution">Google Play services: unable to resolve connection error.</string>
+    <string name="disconnected">Client disconnected</string>
+    <string name="get_address">Get Address</string>
+    <string name="get_location">Get Location</string>
+    <string name="unknown">--Unknown--</string>
+    <string name="unknown_activity_request_code">        Received an unknown activity request code %1$d in onActivityResult.</string>
+    <string name="play_services_available">Google Play services is available</string>
+        <string name="no_geocoder_available">Cannot get address. No geocoder available.</string>
+            <string name="IO_Exception_getFromLocation">IO Exception in Geocoder.getFromLocation()</string>
+    <string name="location_requested">Periodic updates requested</string>
+    <string name="location_updated">Location updated</string>
+    <string name="location_update_error">Location update failed</string>
+    <string name="location_update_error_detail"></string>
+        <string name="illegal_argument_exception">
+        Illegal arguments: Latitude %1$.8f Longitude %2$.8f
+    </string>
+        <!-- Address format -->
+    <string name="address_output_string">%1$s %2$s %3$s</string>
+    <string name="no_address_found">No address found for location</string>
+    <string name="location_updates_stopped">Periodic updates stopped</string>
 </resources>
