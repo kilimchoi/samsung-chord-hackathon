@@ -66,11 +66,19 @@
         </activity>
         <activity
             android:name="ChordFileUploaderActivity"
-            android:label="@string/title_reservation_form"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            >
+            android:label="@string/title_reservation_form" >
         </activity>
 
+        <service
+            android:name="com.samsunghack.chord.api.service.ChordApiDemoService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.samsunghack.chord.api.service.ChordApiDemoService.SERVICE_START" />
+                <action android:name="com.samsunghack.chord.api.service.ChordApiDemoService.SERVICE_STOP" />
+                <action android:name="com.samsunghack.chord.api.service.ChordApiDemoService.SERVICE_BIND" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
