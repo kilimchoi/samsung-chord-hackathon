@@ -8,6 +8,8 @@
 # Java class files
 *.class
 
+.DS_Store
+
 # generated files
 bin/
 gen/
@@ -16,5 +18,4 @@ gen/
 local.properties
 
 # Eclipse project files
-.classpath
 .project
