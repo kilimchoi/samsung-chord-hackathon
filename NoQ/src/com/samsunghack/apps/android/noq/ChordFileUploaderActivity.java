@@ -17,7 +17,7 @@ public class ChordFileUploaderActivity extends FragmentActivity {
     private Button mJoin_leave_btn;
     private Button mPublic_channel_send_btn;
     private ListView mPublicChannelListView;
-    private ChordFileUploaderService mChordFileUploaderActivity;
+    //FIXME - private ChordFileUploaderService mChordFileUploaderActivity;
     private int mInterfaceType;
     
     private boolean bStartedChord = false;
@@ -38,16 +38,16 @@ public class ChordFileUploaderActivity extends FragmentActivity {
 	}
 	
 	public void startChord() {
-        int nError = mChordFileUploaderActivity.start(mInterfaceType);
-        if (ChordManager.ERROR_NONE == nError) {
-            mstartButton.setText(R.string.stop_chord);
-            mJoin_leave_btn.setEnabled(true);
-            mJoin_leave_btn.setText(R.string.join_channel);
-            mPublicChannelListView.setEnabled(true);
-            bStartedChord = true;
-            mPublic_channel_send_btn.setEnabled(true);
-
-        }
+        // FIXME int nError = mChordFileUploaderActivity.start(mInterfaceType);
+//        if (ChordManager.ERROR_NONE == nError) {
+//            mstartButton.setText(R.string.stop_chord);
+//            mJoin_leave_btn.setEnabled(true);
+//            mJoin_leave_btn.setText(R.string.join_channel);
+//            mPublicChannelListView.setEnabled(true);
+//            bStartedChord = true;
+//            mPublic_channel_send_btn.setEnabled(true);
+//
+//        }
     }
 	
 	@Override
