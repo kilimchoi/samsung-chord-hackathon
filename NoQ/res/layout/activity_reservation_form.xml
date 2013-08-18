@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp" >
+        
+    <Button
+        android:id="@+id/pickDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/pickTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickDate" />
+
+     <TextView android:id="@+id/title_numberOfGuests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickTime"
+        android:text="@string/title_number_of_guests"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:textStyle="bold"/>
+     
+    <EditText android:id="@+id/numberOfGuests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/title_numberOfGuests"
+        android:inputType="number"
+        android:layout_below="@id/pickTime"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        />
+            
+    <Button
+        android:id="@+id/submitForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/numberOfGuests"
+        android:text="@string/action_make_reservation" />
+
+
+    <!--
+    <TextView
+        android:id="@+id/dateDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickTime"
+        android:paddingLeft="4dip"
+        android:text="@string/title_date"
+        android:textStyle="bold" />
+
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateDisplay"
+        android:calendarViewShown="false" />
+
+    <TextView
+        android:id="@+id/timeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datePicker"
+        android:paddingLeft="4dip"
+        android:text="@string/title_time"
+        android:textStyle="bold" />
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeDisplay" />
+    -->
+
+</RelativeLayout>

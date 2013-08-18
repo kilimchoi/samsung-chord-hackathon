@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_websearch"
+          android:icon="@drawable/action_search"
+          android:title="@string/action_websearch"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/action_reservations"
+          android:icon="@drawable/action_search"
+          android:title="@string/title_my_reservations"
+          android:showAsAction="never|withText" />
+    
+    <item android:id="@+id/action_reservation_form"
+          android:icon="@drawable/action_search"
+          android:title="@string/action_reservations"
+          android:showAsAction="never|withText" />
+</menu>

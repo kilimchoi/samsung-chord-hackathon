@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NoQ</string>
+    <string name="title_reservation_detail">Reservation Detail</string>
+
+    
+    <string-array name="planets_array">
+        <item>Home</item>
+        <item>My Reservations</item>
+        <item>Nearby Restaurants</item>
+        <item>Favorites</item>
+        <item>Settings</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
+    
+    <!--  NoQ App Specific Strings -->
+    <string name="title_noq">NoQ</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_date">Date</string>
+    <string name="title_time">Time</string>
+    <string name="title_reservation_form">Make Reservation</string>
+    <string name="title_my_reservations">My Reservations</string>
+    <string name="title_number_of_guests">Number of Guests</string>
+    
+    <!--  Actions -->
+    <string name="action_reservations">Reservations</string>
+    <string name="action_make_reservation">Make Reservation</string>
+
+</resources>

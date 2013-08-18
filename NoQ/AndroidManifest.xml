@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.samsunghack.apps.android.noq"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
+    
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />    
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.samsunghack.apps.android.noq.NavDrawerMainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.samsunghack.apps.android.noq.ReservationDetailActivity"
+            android:label="@string/title_reservation_detail"
+            android:parentActivityName=".ReservationListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ReservationListActivity" />
+        </activity>
+ 
+  
+        <activity
+            android:name="com.samsunghack.apps.android.noq.ReservationsActivity"
+            android:label="@string/title_noq">
+        </activity>
+        
+        <activity
+            android:name="CalendarActivity"
+            android:label="@string/title_calendar"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
+        </activity>
+        
+        <activity
+            android:name="ReservationFormActivity"
+            android:label="@string/title_reservation_form"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
+        </activity>
+        
+    </application>
+</manifest>
