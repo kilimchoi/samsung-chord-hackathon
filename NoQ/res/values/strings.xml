@@ -60,7 +60,7 @@
     <string name="location_update_error">Location update failed</string>
     <string name="location_update_error_detail"></string>
     <string name="illegal_argument_exception">        Illegal arguments: Latitude %1$.8f Longitude %2$.8f</string>
-    <string name="search_restaurants">Search Restaurants</string>
+    <string name="search_restaurants">Search</string>
     <!-- Address format -->
     <string name="address_output_string">%1$s %2$s %3$s</string>
     <string name="no_address_found">No address found for location</string>
@@ -97,7 +97,7 @@
     <string name="wifi">Wi-Fi</string>
     <string name="mobile_ap">Mobile AP</string>
     <string name="wifi_direct">Wi-Fi Direct</string>
-    <string name="title">Chord API Demo</string>
+    <string name="title">NoQ Settings</string>
     <string name="description">Select network for using Chord</string>
     <string name="no_device_description">No network connection. Connect to networks and try again</string>
     <string name="must_select">Select at least one node</string>

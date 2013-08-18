@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ public class ReservationFormActivity extends FragmentActivity {
     
     static final int TIME_DIALOG_ID = 0;
     static final int DATE_DIALOG_ID = 1;
+    private Button mMakeReservationButton;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,17 @@ public class ReservationFormActivity extends FragmentActivity {
         mMinute = c.get(Calendar.MINUTE);
 
         updateDisplay();
+        mMakeReservationButton = (Button) findViewById(R.id.submitForm);
+		mMakeReservationButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// Launch confirm Activity
+				Intent reservationConfirmIntent = new Intent(ReservationFormActivity.this,
+						ReservationConfirmActivity.class);
+				
+				startActivity(reservationConfirmIntent);
+			}
+		});
     }
 
     @Override

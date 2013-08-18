@@ -37,11 +37,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.samsunghack.apps.android.noq.NavDrawerMainActivity"
+            android:name="com.mobispectra.android.apps.gplus.SignInActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -78,6 +77,12 @@
             android:configChanges="orientation|screenSize|keyboardHidden" >
         </activity>
         
+        <activity
+            android:name="ReservationConfirmActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="Reservation Confirmation" >
+        </activity>
         <activity
             android:name="PaymentsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -136,11 +141,8 @@
         
         <!-- Gplus Sign Integration -->
         <activity
-            android:name="com.mobispectra.android.apps.gplus.SignInActivity"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
+            android:name="NavDrawerMainActivity"
+            android:label="@string/app_name">
         </activity>
 
         <service

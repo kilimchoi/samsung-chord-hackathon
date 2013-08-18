@@ -41,11 +41,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
 
 import com.mobispectra.android.apps.gplus.SignInActivity;
 import com.samsung.chord.samples.apidemo.ChordApiDemoActivity;
 
-public class NavDrawerMainActivity extends Activity {
+public class NavDrawerMainActivity extends FragmentActivity {
 	private static final String TAG = "NavDrawerMainActivity";
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -203,6 +204,11 @@ public class NavDrawerMainActivity extends Activity {
 
 		switch (position) {
 		case NAV_MENU_HOME:
+			NearbyFragment fragment = new NearbyFragment();
+			// fragment.setArguments(arguments);
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.content_frame, fragment)
+					.commit();
 			Log.d(TAG, "Home Menu Pressed");
 			break;
 		case NAV_MENU_RESERVATIONS:

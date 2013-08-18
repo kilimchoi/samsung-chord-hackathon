@@ -10,6 +10,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.plus.PlusClient;
 import com.google.android.gms.plus.model.people.Person;
 import com.mobispectra.android.apps.gplus.PlusClientFragment.OnSignedInListener;
+import com.samsunghack.apps.android.noq.AppPrefs;
+import com.samsunghack.apps.android.noq.NavDrawerMainActivity;
 import com.samsunghack.apps.android.noq.R;
 
 public class SignInActivity extends FragmentActivity
@@ -36,6 +38,16 @@ public class SignInActivity extends FragmentActivity
         findViewById(R.id.revoke_access_button).setOnClickListener(this);
         mSignInStatus = (TextView) findViewById(R.id.sign_in_status);
         
+		
+		// Initialize Shared Preferences
+		AppPrefs.init(getApplicationContext());
+		
+        if(AppPrefs.getUserAccountName(this)!=null) {
+        	// Launch the Dashboard
+			Intent reservationsIntent = new Intent(SignInActivity.this, NavDrawerMainActivity.class);
+			startActivity(reservationsIntent);
+			finish();
+        }
         // Setup the Action bar
         // setupActionBar(getString(R.string.gplus_signin));
     }
@@ -71,6 +83,11 @@ public class SignInActivity extends FragmentActivity
         if (currentPerson != null) {
             String greeting = getString(R.string.greeting_status, currentPerson.getDisplayName());
             mSignInStatus.setText(greeting);
+            // Add the user name in the Preferences
+            AppPrefs.setUserAccountName(SignInActivity.this, currentPerson.getDisplayName());
+            Intent reservationsIntent = new Intent(SignInActivity.this, NavDrawerMainActivity.class);
+            startActivity(reservationsIntent);
+            finish();
         } else {
             resetAccountState();
         }

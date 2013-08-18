@@ -32,7 +32,7 @@ public class GooglePlacesIfc {
 		Log.d(TAG, "Lon = " + lon);
 		Log.d(TAG, "Search Data = " + searchTerm);
 		StringBuilder URI = new StringBuilder();
-		URI.append("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=5000&types=food")
+		URI.append("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&radius=2000&types=food")
 			.append("&name=" + searchTerm)
 			.append("&sensor=true")
 			.append("&key=" + ApiKeys.GOOGLE_ANDROID_API_KEY);

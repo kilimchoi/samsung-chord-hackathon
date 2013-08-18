@@ -236,7 +236,7 @@ public class DataTestFragment extends Fragment implements OnClickListener, OnScr
     @Override
     public void onClick(View v) {
         ArrayList<String> checkedList = null;
-
+        Log.d(TAG,"Node List is clicked");
         checkedList = getNodeListAdapter(mChannelType).getCheckedNodeList();
 
         if (v.getId() != R.id.datatest_newmessage_textview

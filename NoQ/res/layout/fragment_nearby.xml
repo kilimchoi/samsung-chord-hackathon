@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/empty_log_warning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:padding="6dip"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/nearby_restaurants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal"
+        android:padding="6dip"
+        android:text="Nearby Restaurants"
+        android:background="@color/blue_ocean"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ddffffff"
+        android:textStyle="bold" />
+   
+    <EditText
+        android:id="@+id/search_field"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nearby_restaurants"
+        android:layout_alignParentLeft="true"
+        android:paddingTop="5dp"
+        android:inputType="text">
+    </EditText>
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nearby_restaurants"
+        android:layout_alignParentRight="true"
+        android:text="@string/search_restaurants" >
+    </Button>
+    
+    <ProgressBar
+        android:id="@+id/bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:visibility="gone" />
+    
+    <ListView 
+        android:id="@+id/list_items"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_button" />
+</RelativeLayout>

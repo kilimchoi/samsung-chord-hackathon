@@ -9,5 +9,6 @@
     <color name="pressed2">#40474f</color>
     <color name="stroke">#00000000</color>
     <color name="translucence">#CCAAAAAA</color>
+    <color name="blue_ocean">#0099cc</color>
 
 </resources>
