@@ -1,43 +1,87 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/background_form"
     android:padding="5dp" >
-        
+
+    <TextView
+        android:id="@+id/restaurant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/restaurant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/restaurant_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/restaurant_name"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/date_picker_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/restaurant_address"
+        android:src="@drawable/ic_action_date" />
+
     <Button
         android:id="@+id/pickDate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/restaurant_address"
+        android:layout_toRightOf="@id/date_picker_icon" />
+
+    <ImageView
+        android:id="@+id/time_picker_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/pickDate"
+        android:src="@drawable/ic_action_time" />
 
     <Button
         android:id="@+id/pickTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/pickDate" />
+        android:layout_below="@id/pickDate"
+        android:layout_toRightOf="@id/time_picker_icon" />
 
-     <TextView android:id="@+id/title_numberOfGuests"
+    <TextView
+        android:id="@+id/title_numberOfGuests"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/pickTime"
         android:text="@string/title_number_of_guests"
-        android:textAppearance="?android:attr/textAppearanceMedium" 
-        android:textStyle="bold"/>
-     
-    <EditText android:id="@+id/numberOfGuests"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/numberOfGuests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/pickTime"
         android:layout_toRightOf="@id/title_numberOfGuests"
         android:inputType="number"
-        android:layout_below="@id/pickTime"
-        android:textAppearance="?android:attr/textAppearanceMedium" 
-        />
-            
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <Button
         android:id="@+id/submitForm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/numberOfGuests"
         android:text="@string/action_make_reservation" />
-
 
     <!--
     <TextView

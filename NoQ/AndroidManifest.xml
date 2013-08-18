@@ -72,6 +72,12 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_nearby_restaurants" >
         </activity>
+        
+        <activity
+            android:name="RestaurantMgrActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" >
+        </activity>
+        
         <activity
             android:name="PaymentsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -98,11 +104,44 @@
             android:label="@string/title_reservation_form" >
         </activity>
         
+        <activity
+            android:name="RestaurantMenuActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+        </activity>
+        
        <activity
             android:name="com.samsung.chord.samples.apidemo.ChordApiDemoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" >
         </activity>
          
+       <!--  Notifications -->
+               <activity android:name="IncomingMessage"
+                android:label="App/Notification/IncomingMessage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name="IncomingMessageView"
+                android:label="App/Notification/IncomingMessageView">
+        </activity>
+
+
+        <activity android:name="IncomingMessageInterstitial"
+                android:label="You have messages"
+                android:launchMode="singleTask"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+        </activity>
+        
+        <!-- Gplus Sign Integration -->
+        <activity
+            android:name="com.mobispectra.android.apps.gplus.SignInActivity"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name="com.samsung.chord.samples.apidemo.service.ChordApiDemoService"

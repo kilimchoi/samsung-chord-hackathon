@@ -102,9 +102,10 @@ public class NearbyActivity extends FragmentActivity implements
 		public void onItemClick(AdapterView<?> arg0, View view, int position,
 					long id) {
 				// Launch Reservations activity
+				GooglePlaces restaurantPlace = mGooglePlacesList.get(position);
 				Intent intent = new Intent(NearbyActivity.this,ReservationFormActivity.class);
-				// intent.putExtra("LATTITUDE", mLattitude);
-				// intent.putExtra("LONGITUDE", mLongitude);
+				intent.putExtra(AppConstants.RESTAURANT_NAME, restaurantPlace.getName());
+				intent.putExtra(AppConstants.RESTAURANT_ADDRESS, restaurantPlace.getVicinity());
 				startActivity(intent);
 			}
 		});

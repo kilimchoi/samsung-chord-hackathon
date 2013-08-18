@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">NoQ</string>
     <string name="title_reservation_detail">Reservation Detail</string>
@@ -22,6 +22,9 @@
     <string name="title_reservation_form">Make Reservation</string>
     <string name="title_reservations">Reservations</string>
     <string name="title_number_of_guests">Number of Guests</string>
+    <string name="title_restaurant_manager">Restaurant Manager</string>
+    <string name="title_restaurant_menu">Restaurant Menu</string>
+    <string name="title_address">Address</string>
 
     <!-- Actions -->
     <string name="action_reservations">Reservations</string>
@@ -102,22 +105,25 @@
     <string name="new_message">New message from %1$s\n: %2$s</string>
     <string name="more">More</string>
 
-    <!--
-    <string name="more">more</string>
-    <string name="wifi_direct">Wi-Fi Direct</string>
-    <string name="wifi">Wi-Fi</string>
-    <string name="title">Title</string>
-    <string name="mobile_ap">Mobile AP</string>
-    <string name="description">Description</string>
-    <string name="no_device_description">No network connection. Connect to networks and try again</string>
-    <string name="select_all">Select all</string>
-    <string name="join_channel">Join Channel</string>
-    <string name="leave_channel">Leave Channel</string>
-    <string name="public_channel">Public Channel</string>
-    <string name="joined_channel">Joined Channel</string>
-    <string name="start_chord">Start Chord</string>
-    <string name="stop_chord">Stop Chord</string>
-    <string name="more">More</string>
-    -->
-
+    <!--  Notifications -->
+    <string name="incoming_message_view_message_text">This is the text of the posted notification.</string>
+    <string name="imcoming_message_view_message2_text">Did you notice that the status bar icon disappeared?</string>
+    <string name="imcoming_message_ticker_text">New text message:</string>
+    <string name="imcoming_message_ticker_text">New text message: <xliff:g id="text">%0$s</xliff:g></string>
+    <string name="notification_message">Welcome to Cheese Cake Factory. We will be with you in 5 minutes.</string>
+    <string name="check_menu">Whats for food?</string>
+    
+    
+    <!-- Google Plus Sign in Integration -->
+    <string name="gplus_signin">Sign In</string>
+    <string name="sign_out_button_name">Sign out</string>
+    <string name="revoke_access_button_name">Revoke access</string>
+    <string name="loading_status">Loading…</string>
+    <string name="default_status" />
+    <string name="greeting_status">Welcome, %s.</string>
+    <string name="signing_in_status">Signing in with Google+.</string>
+    <string name="signed_in_status">Signed in.</string>
+    <string name="signed_out_status">Signed out.</string>
+    <string name="progress_message">Signing in to Google&#8230;</string>
+    
 </resources>

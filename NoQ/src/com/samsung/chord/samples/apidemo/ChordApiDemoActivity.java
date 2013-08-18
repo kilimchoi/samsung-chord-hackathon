@@ -18,8 +18,13 @@
 
 package com.samsung.chord.samples.apidemo;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -34,10 +39,12 @@ import com.samsung.chord.samples.apidemo.InterfaceTestFragment.InterfaceTestFrag
 import com.samsung.chord.samples.apidemo.service.ChordApiDemoService;
 import com.samsung.chord.samples.apidemo.service.ChordApiDemoService.ChordServiceBinder;
 import com.samsung.chord.samples.apidemo.service.ChordApiDemoService.IChordServiceListener;
+import com.samsunghack.apps.android.noq.IncomingMessageInterstitial;
+import com.samsunghack.apps.android.noq.IncomingMessageView;
 import com.samsunghack.apps.android.noq.R;
 
 public class ChordApiDemoActivity extends Activity implements InterfaceTestFragmentListener,
-        ChannelTestFagmentListener, IChordServiceListener {
+        ChannelTestFagmentListener, IChordServiceListener, DataTestFragment.OnChordMessageReceive {
 
     private static final String TAG = "[Chord][ApiTest]";
 
@@ -310,6 +317,51 @@ public class ChordApiDemoActivity extends Activity implements InterfaceTestFragm
     @Override
     public void onConnectivityChanged() {
         refreshInterfaceType();
+    }
+    
+    void showInterstitialNotification(String message) {
+        // look up the notification manager service
+        NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+        // The details of our fake message
+        CharSequence from = "Restaurant";
+
+        // The PendingIntent to launch our activity if the user selects this
+        // notification.  Note the use of FLAG_CANCEL_CURRENT so that, if there
+        // is already an active matching pending intent, cancel it and replace
+        // it with the new Intent.
+        Intent intent = new Intent(this, IncomingMessageInterstitial.class);
+        intent.putExtra(IncomingMessageView.KEY_FROM, from);
+        intent.putExtra(IncomingMessageView.KEY_MESSAGE, message);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
+                intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        // The ticker text, this uses a formatted string so our message could be localized
+        String tickerText = getString(R.string.imcoming_message_ticker_text, message);
+
+        // construct the Notification object.
+        Notification notif = new Notification(R.drawable.stat_sample, tickerText,
+                System.currentTimeMillis());
+
+        // Set the info for the views that show in the notification panel.
+        notif.setLatestEventInfo(this, from, message, contentIntent);
+
+        // We'll have this notification do the default sound, vibration, and led.
+        // Note that if you want any of these behaviors, you should always have
+        // a preference for the user to turn them off.
+        notif.defaults = Notification.DEFAULT_ALL;
+
+        // Note that we use R.layout.incoming_message_panel as the ID for
+        // the notification.  It could be any integer you want, but we use
+        // the convention of using a resource id for a string related to
+        // the notification.  It will always be a unique number within your
+        // application.
+        nm.notify(R.string.imcoming_message_ticker_text, notif);
+    }
+    
+    public void onChordMessageReceive(String message) {
+    	showInterstitialNotification(message);
     }
 
 }

@@ -20,10 +20,14 @@ package com.samsung.chord.samples.apidemo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -51,12 +55,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 
 import com.samsung.chord.samples.apidemo.adapter.ChatListAdapter;
 import com.samsung.chord.samples.apidemo.adapter.ChatListAdapter.ICancelFileButtonListener;
 import com.samsung.chord.samples.apidemo.adapter.NodeListAdapter;
 import com.samsung.chord.samples.apidemo.service.ChordApiDemoService;
 import com.samsung.chord.samples.apidemo.service.ChordApiDemoService.IChordServiceListener;
+import com.samsunghack.apps.android.noq.IncomingMessageInterstitial;
+import com.samsunghack.apps.android.noq.IncomingMessageView;
 import com.samsunghack.apps.android.noq.R;
 
 public class DataTestFragment extends Fragment implements OnClickListener, OnScrollListener,
@@ -92,6 +101,14 @@ public class DataTestFragment extends Fragment implements OnClickListener, OnScr
     private String mMyNodeName;
 
     private HashMap<String, AlertDialog> mAlertDialogMap = null;
+    
+    OnChordMessageReceive mCallback;
+    
+    // Container Activity must implement this interface
+    public interface OnChordMessageReceive {
+        public void onChordMessageReceive(String message);
+    }
+    
 
     private GestureDetector mGesture = new GestureDetector(getActivity(),
             new GestureDetector.SimpleOnGestureListener() {
@@ -201,6 +218,21 @@ public class DataTestFragment extends Fragment implements OnClickListener, OnScr
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (OnChordMessageReceive) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnChordMessageReceive");
+        }
+    }
+    
+    
     @Override
     public void onClick(View v) {
         ArrayList<String> checkedList = null;
@@ -520,6 +552,8 @@ public class DataTestFragment extends Fragment implements OnClickListener, OnScr
     }
 
     public void onMessageReceived(String nodeName, String channel, String message) {
+    	// Show notification to the user for new message
+    	mCallback.onChordMessageReceive(message);
         addMessageToChat(false, nodeName, channel, message);
     }
 

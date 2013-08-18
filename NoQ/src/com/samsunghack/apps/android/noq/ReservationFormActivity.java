@@ -5,6 +5,7 @@ import java.util.Calendar;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
@@ -19,6 +20,10 @@ public class ReservationFormActivity extends FragmentActivity {
     // where we display the selected date and time
     private TextView mDateDisplay;
     private TextView mTimeDisplay;
+    private TextView mRestaurantNameV;
+    private TextView mRestaurantAddressV;
+    private String mRestaurantName;
+    private String mRestaurantAddress;
 
     // date and time
     private int mYear;
@@ -37,6 +42,19 @@ public class ReservationFormActivity extends FragmentActivity {
 
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		// Extract the Extra Data passed to this activity
+		Intent intent = getIntent();
+		Bundle indexBundle = intent.getExtras();
+		if (indexBundle != null) {
+			mRestaurantName = indexBundle.getString(AppConstants.RESTAURANT_NAME);
+			mRestaurantAddress = indexBundle.getString(AppConstants.RESTAURANT_ADDRESS);
+		}
+		
+		mRestaurantNameV = (TextView) findViewById(R.id.restaurant_name);
+		mRestaurantNameV.setText(mRestaurantName);
+		mRestaurantAddressV = (TextView) findViewById(R.id.restaurant_address);
+		mRestaurantAddressV.setText(mRestaurantAddress);
 		
 		mDateDisplay = (TextView) findViewById(R.id.pickDate);
 		mTimeDisplay = (TextView) findViewById(R.id.pickTime);

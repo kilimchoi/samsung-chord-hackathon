@@ -13,20 +13,6 @@ public class ReservationsActivity extends FragmentActivity {
 
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-
-		if (savedInstanceState == null) {
-			// Create the detail fragment and add it to the activity
-			// using a fragment transaction.
-			Bundle arguments = new Bundle();
-			arguments.putString(
-					ReservationDetailFragment.ARG_ITEM_ID,
-					getIntent().getStringExtra(
-							ReservationDetailFragment.ARG_ITEM_ID));
-			ReservationDetailFragment fragment = new ReservationDetailFragment();
-			fragment.setArguments(arguments);
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.reservation_detail_container, fragment).commit();
-		}
 	}
 	
 	@Override

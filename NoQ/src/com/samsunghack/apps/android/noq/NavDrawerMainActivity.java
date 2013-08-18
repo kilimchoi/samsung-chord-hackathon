@@ -19,6 +19,7 @@ package com.samsunghack.apps.android.noq;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.mobispectra.android.apps.gplus.SignInActivity;
 import com.samsung.chord.samples.apidemo.ChordApiDemoActivity;
 
 import android.app.Activity;
@@ -59,7 +60,7 @@ public class NavDrawerMainActivity extends Activity {
 	private static final int NAV_MENU_NEARBY=2;
 	private static final int NAV_MENU_PAYMENTS=3;
 	private static final int NAV_MENU_SETTINGS=4;
-	private static final int NAV_MENU_CHORD_IFC=5;
+	private static final int NAV_MENU_RESTAURANT_MANAGER=5;
 	private static final int NAV_MENU_LENGTH=6;
 
 	private static String[] mAppFeatureTitles = new String[NAV_MENU_LENGTH];
@@ -203,8 +204,11 @@ public class NavDrawerMainActivity extends Activity {
 			break;
 		case NAV_MENU_RESERVATIONS:
 			Log.d(TAG, "Reservations Menu Pressed");
+			// Intent reservationsIntent = new Intent(NavDrawerMainActivity.this,
+			//		ReservationFormActivity.class);
 			Intent reservationsIntent = new Intent(NavDrawerMainActivity.this,
-					ReservationFormActivity.class);
+					SignInActivity.class);
+			
 			startActivity(reservationsIntent);
 			break;
 
@@ -223,14 +227,15 @@ public class NavDrawerMainActivity extends Activity {
 			break;
 
 		case NAV_MENU_SETTINGS:
-			Intent chordUpload = new Intent(NavDrawerMainActivity.this, ChordFileUploaderActivity.class);
-			startActivity(chordUpload);
+			Intent chordSettingsIntent = new Intent(NavDrawerMainActivity.this, ChordApiDemoActivity.class);
+			startActivity(chordSettingsIntent);
 			Log.d(TAG,"Settings Menu Pressed");
 			break;
-		case NAV_MENU_CHORD_IFC:
-			Intent chordDemoIntent = new Intent(NavDrawerMainActivity.this, ChordApiDemoActivity.class);
-			startActivity(chordDemoIntent);
-			Log.d(TAG,"NAV_MENU_CHORD_IFC Menu Pressed");
+			
+		case NAV_MENU_RESTAURANT_MANAGER:
+			Intent restaurantMgrIntent = new Intent(NavDrawerMainActivity.this,RestaurantMgrActivity.class);
+			startActivity(restaurantMgrIntent);
+			Log.d(TAG,"NAV_MENU_RESTAURANT_MANAGER Menu Pressed");
 			break;
 		}
 
@@ -328,11 +333,10 @@ public class NavDrawerMainActivity extends Activity {
 	private void setupNavigationMenu() {
 		ArrayList<NavMenuItem> navMenuItemsList = new ArrayList<NavMenuItem>();
 		navMenuItemsList.add(new NavMenuItem(NAV_MENU_HOME, R.string.title_home, R.drawable.ic_launcher));
-		navMenuItemsList.add(new NavMenuItem(NAV_MENU_RESERVATIONS, R.string.title_reservations,R.drawable.ic_launcher));
+		navMenuItemsList.add(new NavMenuItem(NAV_MENU_RESERVATIONS, R.string.title_reservations,R.drawable.ic_action_reservation));
 		navMenuItemsList.add(new NavMenuItem(NAV_MENU_NEARBY, R.string.title_nearby_restaurants,R.drawable.ic_launcher));
-		navMenuItemsList.add(new NavMenuItem(NAV_MENU_PAYMENTS, R.string.title_payments,R.drawable.ic_launcher));
-		navMenuItemsList.add(new NavMenuItem(NAV_MENU_SETTINGS, R.string.title_settings,R.drawable.ic_launcher));
-		navMenuItemsList.add(new NavMenuItem(NAV_MENU_CHORD_IFC, R.string.title_chord_ifc,R.drawable.ic_launcher));
-		
+		navMenuItemsList.add(new NavMenuItem(NAV_MENU_PAYMENTS, R.string.title_payments,R.drawable.ic_action_payment));
+		navMenuItemsList.add(new NavMenuItem(NAV_MENU_SETTINGS, R.string.title_settings,R.drawable.ic_action_settings));
+		navMenuItemsList.add(new NavMenuItem(NAV_MENU_RESTAURANT_MANAGER, R.string.title_restaurant_manager,R.drawable.ic_launcher));
 	}
 }
