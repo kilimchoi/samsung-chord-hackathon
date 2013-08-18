@@ -19,9 +19,6 @@ package com.samsunghack.apps.android.noq;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.mobispectra.android.apps.gplus.SignInActivity;
-import com.samsung.chord.samples.apidemo.ChordApiDemoActivity;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -44,6 +41,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.mobispectra.android.apps.gplus.SignInActivity;
+import com.samsung.chord.samples.apidemo.ChordApiDemoActivity;
 
 public class NavDrawerMainActivity extends Activity {
 	private static final String TAG = "NavDrawerMainActivity";
@@ -113,6 +113,9 @@ public class NavDrawerMainActivity extends Activity {
 		if (savedInstanceState == null) {
 			selectItemNew(0);
 		}
+		
+		// Initialize Shared Preferences
+		AppPrefs.init(getApplicationContext());
 	}
 	@Override
 	public void onResume() {

@@ -33,6 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.samsung.chord.ChordManager;
+import com.samsunghack.apps.android.noq.AppPrefs;
 import com.samsunghack.apps.android.noq.R;
 
 public class InterfaceTestFragment extends Fragment implements OnClickListener {
@@ -168,12 +169,22 @@ public class InterfaceTestFragment extends Fragment implements OnClickListener {
 
         if (bAvailableWifi) {
             mButtenWifi.setCompoundDrawables(null, mDrawableAccept, null, null);
+            AppPrefs.setRestaurantConsole(true);
+            boolean isRestaurantConsole = AppPrefs.getRestaurantConsole();
+            Log.d(TAG,"Is Restaurant Console = " + isRestaurantConsole); 
+            // Launch the Chord on WiFi AP
+            // mListener.startChannelTestFragment(ChordManager.INTERFACE_TYPE_WIFI);
         } else {
             mButtenWifi.setCompoundDrawables(null, mDrawableCancel, null, null);
         }
 
         if (bAvailableMobileAp) {
             mButtenMobileAp.setCompoundDrawables(null, mDrawableAccept, null, null);
+            AppPrefs.setRestaurantConsole(true);
+            boolean isRestaurantConsole = AppPrefs.getRestaurantConsole();
+            Log.d(TAG,"Is Restaurant Console = " + isRestaurantConsole); 
+            // Launch the Chord on Mobile AP
+            // mListener.startChannelTestFragment(ChordManager.INTERFACE_TYPE_WIFIAP);
         } else {
             mButtenMobileAp.setCompoundDrawables(null, mDrawableCancel, null, null);
         }
