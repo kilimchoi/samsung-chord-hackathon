@@ -110,6 +110,14 @@ public class NavDrawerMainActivity extends Activity {
 			selectItemNew(0);
 		}
 	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		// Set the title to App Title
+		selectItemNew(0);
+		setTitle(getResources().getString(R.string.app_name));
+	}
+		
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -184,51 +192,47 @@ public class NavDrawerMainActivity extends Activity {
 	}
 	
 	private void selectItemNew(int position) {
-		// update the main content by replacing fragments
-		Fragment fragment = new PlanetFragment();
 		Log.d(TAG, "+selectItem: positon = " + position);
-		Bundle args = new Bundle();
-		args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-		switch(position) {
+
+		switch (position) {
 		case NAV_MENU_HOME:
-			Log.d(TAG,"Home Menu Pressed");
+			Log.d(TAG, "Home Menu Pressed");
 			break;
 		case NAV_MENU_RESERVATIONS:
-			Log.d(TAG,"Reservations Menu Pressed");
+			Log.d(TAG, "Reservations Menu Pressed");
 			Intent reservationsIntent = new Intent(NavDrawerMainActivity.this,
 					ReservationFormActivity.class);
 			startActivity(reservationsIntent);
 			break;
-			
-		case NAV_MENU_NEARBY:
-			Intent nearbyIntent = new Intent(NavDrawerMainActivity.this, NearbyActivity.class);
-			startActivity(nearbyIntent);
-			Log.d(TAG,"Nearby Menu Pressed");
-			break;
-		
-		case NAV_MENU_PAYMENTS:
-			Intent paymentsIntent = new Intent(NavDrawerMainActivity.this, PaymentsActivity.class);
-			startActivity(paymentsIntent);
-			Log.d(TAG,"Nearby Menu Pressed");
-			break;
-		
-		case NAV_MENU_SETTINGS:
-			Log.d(TAG,"Settings Menu Pressed");
-			break;
-			
-		}
-		fragment.setArguments(args);
 
-		FragmentManager fragmentManager = getFragmentManager();
-		fragmentManager.beginTransaction()
-				.replace(R.id.content_frame, fragment).commit();
+		case NAV_MENU_NEARBY:
+			Intent nearbyIntent = new Intent(NavDrawerMainActivity.this,
+					NearbyActivity.class);
+			startActivity(nearbyIntent);
+			Log.d(TAG, "Nearby Menu Pressed");
+			break;
+
+		case NAV_MENU_PAYMENTS:
+			Intent paymentsIntent = new Intent(NavDrawerMainActivity.this,
+					PaymentsActivity.class);
+			startActivity(paymentsIntent);
+			Log.d(TAG, "Nearby Menu Pressed");
+			break;
+
+		case NAV_MENU_SETTINGS:
+			Log.d(TAG, "Settings Menu Pressed");
+			break;
+
+		}
 
 		// update selected item and title, then close the drawer
 		mDrawerList.setItemChecked(position, true);
-		setTitle(mAppFeatureTitles[position]);
+
+		if (position != NAV_MENU_HOME) {
+			setTitle(mAppFeatureTitles[position]);
+		}
 		mDrawerLayout.closeDrawer(mDrawerList);
 	}
-	
 
 	@Override
 	public void setTitle(CharSequence title) {

@@ -1,6 +1,8 @@
 package com.samsunghack.apps.android.noq;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -20,8 +22,18 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,25 +44,16 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.samsunghack.apps.android.utils.ImageDownloader;
 import com.samsunghack.apps.android.utils.LocationUtils;
-
-/**
- * This the app's main Activity. It provides buttons for requesting the various
- * features of the app, displays the current location, the current address, and
- * the status of the location client and updating services.
- * 
- * {@link #getLocation} gets the current location using the Location Services
- * getLastLocation() function. {@link #getAddress} calls geocoding to get a
- * street address for the current location. {@link #startUpdates} sends a
- * request to Location Services to send periodic location updates to the
- * Activity. {@link #stopUpdates} cancels previous periodic update requests.
- * 
- * The update interval is hard-coded to be 5 seconds.
- */
+import com.samsunghack.apps.apis.GooglePlacesData;
+import com.samsunghack.apps.apis.GooglePlacesData.GooglePlaces;
+import com.samsunghack.apps.apis.GooglePlacesIfc;
 
 public class NearbyActivity extends FragmentActivity implements
 		LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
 		GooglePlayServicesClient.OnConnectionFailedListener {
+	private static final String TAG="NearbyActivity";
 	// A request to connect to Location Services
 	private LocationRequest mLocationRequest;
 
@@ -63,6 +66,10 @@ public class NearbyActivity extends FragmentActivity implements
 	private ProgressBar mActivityIndicator;
 	private TextView mConnectionState;
 	private TextView mConnectionStatus;
+	private ListView mRestaurantsListV;
+	private EditText mSearchField;
+	private Button mSearchButton;
+	private String mSearchData;
 
 	// Handle to SharedPreferences for this app
 	SharedPreferences mPrefs;
@@ -75,6 +82,10 @@ public class NearbyActivity extends FragmentActivity implements
 	 * "true" in the method handleRequestSuccess of LocationUpdateReceiver.
 	 */
 	boolean mUpdatesRequested = false;
+	
+	GooglePlacesData mGooglePlacesData;
+	ArrayList<GooglePlaces> mGooglePlacesList;
+	private GooglePlacesAdapter mGooglePlacesAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +95,35 @@ public class NearbyActivity extends FragmentActivity implements
 		// Show the Up button in the action bar.
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
+		mRestaurantsListV = (ListView) findViewById(R.id.restaurants_list);
+		
+		mRestaurantsListV.setOnItemClickListener(new OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View view, int position,
+					long id) {
+				// Launch Reservations activity
+				Intent intent = new Intent(NearbyActivity.this,ReservationFormActivity.class);
+				// intent.putExtra("LATTITUDE", mLattitude);
+				// intent.putExtra("LONGITUDE", mLongitude);
+				startActivity(intent);
+			}
+		});
+		
+		mSearchField = (EditText) findViewById(R.id.search_field);
+		mSearchButton = (Button) findViewById(R.id.search_button);
+		mSearchButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mSearchData = mSearchField.getText().toString();
+				String[] params = new String[3];;
+				params[0] = "37.37677240"; // Lat
+				params[1] = "-121.92164020"; // Long
+				params[2] = mSearchData;
+				new FindNearbyRestaurantsTask().execute(params);
+			}
+		});
+		
 		// Get handles to the UI view objects
 		mLatLng = (TextView) findViewById(R.id.lat_lng);
 		mAddress = (TextView) findViewById(R.id.address);
@@ -122,6 +162,7 @@ public class NearbyActivity extends FragmentActivity implements
 		 * callbacks.
 		 */
 		mLocationClient = new LocationClient(this, this, this);
+	
 
 	}
 
@@ -205,6 +246,14 @@ public class NearbyActivity extends FragmentActivity implements
 			mEditor.putBoolean(LocationUtils.KEY_UPDATES_REQUESTED, false);
 			mEditor.commit();
 		}
+		
+//		String[] params = new String[3];
+//		params[0] = "37.37677240";
+//		params[1] = "-121.92164020";
+//		params[2] = "pizza";
+//		
+//		// Find Nearby Restaurants
+//		new FindNearbyRestaurantsTask().execute(params);
 	}
 
 	/*
@@ -666,6 +715,97 @@ public class NearbyActivity extends FragmentActivity implements
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			return mDialog;
+		}
+	}
+	
+	class GooglePlacesAdapter extends ArrayAdapter<GooglePlaces> {
+		private final LayoutInflater mLayoutInflater;
+		private final ImageDownloader imageDownloader = new ImageDownloader();
+
+		GooglePlacesAdapter(NearbyActivity activity,ArrayList<GooglePlaces> GooglePlacesList) {
+			super(activity, 0);
+			mLayoutInflater = LayoutInflater.from(activity);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ViewHolder holder;
+			if (convertView == null) {
+				convertView = mLayoutInflater.inflate(R.layout.list_item_googleplaces, parent, false);
+
+				holder = new ViewHolder();
+
+				holder.name = (TextView) convertView.findViewById(R.id.name);
+				holder.vicinity = (TextView) convertView.findViewById(R.id.vicinity);
+				holder.imageView = (ImageView) convertView.findViewById(R.id.image);
+				
+
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
+			}
+			final GooglePlaces googlePlaces = getItem(position);
+			imageDownloader.download(googlePlaces.getIcon(), (ImageView) holder.imageView);
+			holder.name.setText(googlePlaces.getName());
+			holder.vicinity.setText(googlePlaces.getVicinity());
+			return convertView;
+		}
+	}
+
+	class ViewHolder {
+		ImageView imageView;
+		TextView name;
+		TextView vicinity;
+		
+	}
+	
+	private class FindNearbyRestaurantsTask extends AsyncTask<String, String, GooglePlacesData> {
+
+		protected GooglePlacesData doInBackground(String... params) {
+			return GooglePlacesIfc.getPlaces(getApplicationContext(),params[0],params[1],params[2],"food");
+		}
+
+		protected void onProgressUpdate(String... progress) {
+
+		}
+
+		protected void onPostExecute(GooglePlacesData googlePlacesData) {
+			if(googlePlacesData!=null) {
+				displayGooglePlaces(googlePlacesData);
+			}
+		}
+
+		protected void onPreExecute() {
+
+		}
+	}
+	
+	private void displayGooglePlaces(GooglePlacesData googlePlacesData) {
+		mGooglePlacesData = googlePlacesData;
+		if (mGooglePlacesData != null) {
+			mGooglePlacesList = mGooglePlacesData.getFeatuersData();
+			if (mGooglePlacesList != null && mGooglePlacesList.isEmpty() == false) {
+				if (mGooglePlacesAdapter == null) {
+					mGooglePlacesAdapter = new GooglePlacesAdapter(NearbyActivity.this,mGooglePlacesList);
+				}
+				mGooglePlacesAdapter.clear();
+				Iterator<GooglePlaces> it = mGooglePlacesList.iterator();
+				
+				while(it.hasNext()){
+					GooglePlaces GooglePlaces = it.next();
+					mGooglePlacesAdapter.add(GooglePlaces);
+				}
+				if (mGooglePlacesAdapter.isEmpty()) {
+					Toast.makeText(this,R.string.fatal_error, Toast.LENGTH_SHORT).show();
+				} else {
+					mRestaurantsListV.setAdapter(mGooglePlacesAdapter);
+				}
+			}
+			else{
+				Toast.makeText(getApplicationContext(), "No GooglePlaces available.", Toast.LENGTH_SHORT).show();
+			}
+		} else {
+			Log.e(TAG,"displayGooglePlaces: mGooglePlacesData = null");
 		}
 	}
 }

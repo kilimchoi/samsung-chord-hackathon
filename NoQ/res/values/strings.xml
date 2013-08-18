@@ -28,7 +28,9 @@
 
     <!-- Latitude, longitude format -->
     <string name="latitude_longitude">%1$.8f, %2$.8f</string>
-
+    
+    <!--  Error messages -->
+    <string name="fatal_error">Fatal Error Occurred.</string>
     <!-- Nearby Feature -->
     <string name="nearby_start_updates">Start Update</string>
     <string name="nearby_stop_updates">Stop Update</string>
@@ -56,6 +58,7 @@
         <string name="illegal_argument_exception">
         Illegal arguments: Latitude %1$.8f Longitude %2$.8f
     </string>
+    <string name="search_restaurants">Search Restaurants</string>
         <!-- Address format -->
     <string name="address_output_string">%1$s %2$s %3$s</string>
     <string name="no_address_found">No address found for location</string>
