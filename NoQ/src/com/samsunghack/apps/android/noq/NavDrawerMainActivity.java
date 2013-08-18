@@ -213,6 +213,8 @@ public class NavDrawerMainActivity extends Activity {
 			break;
 		
 		case NAV_MENU_SETTINGS:
+			Intent chordUpload = new Intent(NavDrawerMainActivity.this, ChordFileUploaderActivity.class);
+			startActivity(chordUpload);
 			Log.d(TAG,"Settings Menu Pressed");
 			break;
 			
