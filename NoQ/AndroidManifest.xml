@@ -75,6 +75,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_payments" >
         </activity>
+<<<<<<< HEAD
         <service
             android:name="com.paypal.android.sdk.payments.PayPalService"
             android:exported="false" />
@@ -88,6 +89,23 @@
             android:name="io.card.payment.CardIOActivity"
             android:configChanges="keyboardHidden|orientation" />
         <activity android:name="io.card.payment.DataEntryActivity" />
+=======
+        <activity
+            android:name="ChordFileUploaderActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/title_reservation_form" >
+        </activity>
+
+        <service
+            android:name="com.samsunghack.chord.api.service.ChordApiDemoService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.samsunghack.chord.api.service.ChordApiDemoService.SERVICE_START" />
+                <action android:name="com.samsunghack.chord.api.service.ChordApiDemoService.SERVICE_STOP" />
+                <action android:name="com.samsunghack.chord.api.service.ChordApiDemoService.SERVICE_BIND" />
+            </intent-filter>
+        </service>
+>>>>>>> 1a111f7397486a6a6835576a87882db084a8f60b
     </application>
 
 </manifest>
