@@ -220,9 +220,13 @@ public class NavDrawerMainActivity extends Activity {
 			break;
 
 		case NAV_MENU_SETTINGS:
+<<<<<<< HEAD
+			Log.d(TAG, "Settings Menu Pressed");
+=======
 			Intent chordUpload = new Intent(NavDrawerMainActivity.this, ChordFileUploaderActivity.class);
 			startActivity(chordUpload);
 			Log.d(TAG,"Settings Menu Pressed");
+>>>>>>> 8a5fa2f7e207f3ffc3c076aa4c7b07498b0586bc
 			break;
 
 		}

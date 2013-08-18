@@ -64,6 +64,13 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_payments" >
         </activity>
+        <activity
+            android:name="ChordFileUploaderActivity"
+            android:label="@string/title_reservation_form"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            >
+        </activity>
+
     </application>
 
 </manifest>

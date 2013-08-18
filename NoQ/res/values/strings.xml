@@ -62,5 +62,7 @@
         <!-- Address format -->
     <string name="address_output_string">%1$s %2$s %3$s</string>
     <string name="no_address_found">No address found for location</string>
-    <string name="location_updates_stopped">Periodic updates stopped</string>
+    <string name="location_updates_stopped">Periodic updates stopped</string> 
+    <string name="stop_chord">Stop Chord</string>
+    <string name="join_channel">Join Channel</string>
 </resources>
