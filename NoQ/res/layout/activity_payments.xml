@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
     <TextView
         android:id="@+id/label_lat_lng"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Payments Details!" />
-</RelativeLayout>
+        android:text="Order on 15/2/2013!" />
+    
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#CC0033" />
+    
+    <TextView
+        android:id="@+id/label_lat_lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--------------" />
+    <TextView
+        android:id="@+id/label_lat_lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total $27"
+        android:textColor="#CC0033" />
+    
+    <Button
+        android:id="@+id/buyItBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="onBuyPressed"
+        android:text="Pay Now!" />
+
+</LinearLayout>
