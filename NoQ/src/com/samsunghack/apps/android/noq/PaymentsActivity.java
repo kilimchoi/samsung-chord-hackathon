@@ -68,7 +68,7 @@ public class PaymentsActivity extends ListActivity {
     }
 
     public void onBuyPressed(View pressed) {
-        PayPalPayment thingToBuy = new PayPalPayment(new BigDecimal("1.75"), "USD", "hipster jeans");
+        PayPalPayment thingToBuy = new PayPalPayment(new BigDecimal("41.75"), "USD", "Cheese Cake Factory");
         
         Intent intent = new Intent(this, PaymentActivity.class);
         

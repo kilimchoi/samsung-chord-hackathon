@@ -14,6 +14,7 @@
     <string name="title_nearby_restaurants">Nearby Restaurants</string>
     <string name="title_payments">Payments</string>
     <string name="title_settings">Settings</string>
+    <string name="title_chord_ifc">Chord Ifc</string>
     <string name="title_favorites">Favorites</string>
     <string name="title_calendar">Calendar</string>
     <string name="title_date">Date</string>
@@ -28,8 +29,8 @@
 
     <!-- Latitude, longitude format -->
     <string name="latitude_longitude">%1$.8f, %2$.8f</string>
-    
-    <!--  Error messages -->
+
+    <!-- Error messages -->
     <string name="fatal_error">Fatal Error Occurred.</string>
     <!-- Nearby Feature -->
     <string name="nearby_start_updates">Start Update</string>
@@ -49,20 +50,74 @@
     <string name="unknown">--Unknown--</string>
     <string name="unknown_activity_request_code">        Received an unknown activity request code %1$d in onActivityResult.</string>
     <string name="play_services_available">Google Play services is available</string>
-        <string name="no_geocoder_available">Cannot get address. No geocoder available.</string>
-            <string name="IO_Exception_getFromLocation">IO Exception in Geocoder.getFromLocation()</string>
+    <string name="no_geocoder_available">Cannot get address. No geocoder available.</string>
+    <string name="IO_Exception_getFromLocation">IO Exception in Geocoder.getFromLocation()</string>
     <string name="location_requested">Periodic updates requested</string>
     <string name="location_updated">Location updated</string>
     <string name="location_update_error">Location update failed</string>
     <string name="location_update_error_detail"></string>
-        <string name="illegal_argument_exception">
-        Illegal arguments: Latitude %1$.8f Longitude %2$.8f
-    </string>
+    <string name="illegal_argument_exception">        Illegal arguments: Latitude %1$.8f Longitude %2$.8f</string>
     <string name="search_restaurants">Search Restaurants</string>
-        <!-- Address format -->
+    <!-- Address format -->
     <string name="address_output_string">%1$s %2$s %3$s</string>
     <string name="no_address_found">No address found for location</string>
-    <string name="location_updates_stopped">Periodic updates stopped</string> 
+    <string name="location_updates_stopped">Periodic updates stopped</string>
+
+    <!-- Chord APIs -->
+    <string name="select_all">Select all</string>
+    <string name="file">File</string>
+    <string name="from_ps_file_ps">Receive %2$s from %1$s?</string>
+    <string name="sending_ps_failed">Sending %s failed</string>
+    <string name="receiving_ps_failed">Receiving %s failed</string>
+    <string name="sending_failed_message">Sending failed message</string>
+    <string name="not_support_file">Unable to send. File type not supported</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="ps_sent_to_ps">%1$s sent to %2$s</string>
+    <string name="ps_receive_from_ps">%1$s receive from %2$s</string>
+    <string name="accepted_receiving_ps_from_ps">Accepted receiving %1$s from %2$s</string>
+    <string name="rejected_receiving_ps">Rejected receiving %s</string>
+    <string name="sending_to_ps">Sending to %s</string>
+    <string name="receiving_from_ps">Receiving from %s</string>
+    <string name="sending_ps_rejected_by_ps">Sending %1$s rejected by %2$s</string>
+    <string name="ps_transfer_cancelled_by_ps">%1$s transfer cancelled by %2$s</string>
+    <string name="start_chord">Start Chord</string>
     <string name="stop_chord">Stop Chord</string>
     <string name="join_channel">Join Channel</string>
+    <string name="leave_channel">Leave Channel</string>
+    <string name="public_channel">Public Channel</string>
+    <string name="joined_channel">Joined Channel</string>
+    <string name="send_data_file">Send data/file</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="mobile_ap">Mobile AP</string>
+    <string name="wifi_direct">Wi-Fi Direct</string>
+    <string name="title">Chord API Demo</string>
+    <string name="description">Select network for using Chord</string>
+    <string name="no_device_description">No network connection. Connect to networks and try again</string>
+    <string name="must_select">Select at least one node</string>
+    <string name="input_channel_name">Enter new channel name</string>
+    <string name="new_message">New message from %1$s\n: %2$s</string>
+    <string name="more">More</string>
+
+    <!--
+    <string name="more">more</string>
+    <string name="wifi_direct">Wi-Fi Direct</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="title">Title</string>
+    <string name="mobile_ap">Mobile AP</string>
+    <string name="description">Description</string>
+    <string name="no_device_description">No network connection. Connect to networks and try again</string>
+    <string name="select_all">Select all</string>
+    <string name="join_channel">Join Channel</string>
+    <string name="leave_channel">Leave Channel</string>
+    <string name="public_channel">Public Channel</string>
+    <string name="joined_channel">Joined Channel</string>
+    <string name="start_chord">Start Chord</string>
+    <string name="stop_chord">Stop Chord</string>
+    <string name="more">More</string>
+    -->
+
 </resources>

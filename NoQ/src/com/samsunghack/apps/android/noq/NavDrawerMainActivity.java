@@ -19,6 +19,8 @@ package com.samsunghack.apps.android.noq;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import com.samsung.chord.samples.apidemo.ChordApiDemoActivity;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -57,7 +59,8 @@ public class NavDrawerMainActivity extends Activity {
 	private static final int NAV_MENU_NEARBY=2;
 	private static final int NAV_MENU_PAYMENTS=3;
 	private static final int NAV_MENU_SETTINGS=4;
-	private static final int NAV_MENU_LENGTH=5;
+	private static final int NAV_MENU_CHORD_IFC=5;
+	private static final int NAV_MENU_LENGTH=6;
 
 	private static String[] mAppFeatureTitles = new String[NAV_MENU_LENGTH];
 	
@@ -224,7 +227,11 @@ public class NavDrawerMainActivity extends Activity {
 			startActivity(chordUpload);
 			Log.d(TAG,"Settings Menu Pressed");
 			break;
-
+		case NAV_MENU_CHORD_IFC:
+			Intent chordDemoIntent = new Intent(NavDrawerMainActivity.this, ChordApiDemoActivity.class);
+			startActivity(chordDemoIntent);
+			Log.d(TAG,"NAV_MENU_CHORD_IFC Menu Pressed");
+			break;
 		}
 
 		// update selected item and title, then close the drawer
@@ -325,5 +332,7 @@ public class NavDrawerMainActivity extends Activity {
 		navMenuItemsList.add(new NavMenuItem(NAV_MENU_NEARBY, R.string.title_nearby_restaurants,R.drawable.ic_launcher));
 		navMenuItemsList.add(new NavMenuItem(NAV_MENU_PAYMENTS, R.string.title_payments,R.drawable.ic_launcher));
 		navMenuItemsList.add(new NavMenuItem(NAV_MENU_SETTINGS, R.string.title_settings,R.drawable.ic_launcher));
+		navMenuItemsList.add(new NavMenuItem(NAV_MENU_CHORD_IFC, R.string.title_chord_ifc,R.drawable.ic_launcher));
+		
 	}
 }

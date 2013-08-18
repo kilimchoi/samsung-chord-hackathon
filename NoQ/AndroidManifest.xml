@@ -7,6 +7,7 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- Camera features -->
@@ -19,6 +20,7 @@
     <uses-feature
         android:name="android.hardware.camera.flash"
         android:required="false" />
+
     <uses-permission android:name="android.permission.VIBRATE" >
     </uses-permission>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -75,6 +77,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/title_payments" >
         </activity>
+
         <service
             android:name="com.paypal.android.sdk.payments.PayPalService"
             android:exported="false" />
@@ -88,6 +91,28 @@
             android:name="io.card.payment.CardIOActivity"
             android:configChanges="keyboardHidden|orientation" />
         <activity android:name="io.card.payment.DataEntryActivity" />
+        
+        <activity
+            android:name="ChordFileUploaderActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:label="@string/title_reservation_form" >
+        </activity>
+        
+       <activity
+            android:name="com.samsung.chord.samples.apidemo.ChordApiDemoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" >
+        </activity>
+         
+
+        <service
+            android:name="com.samsung.chord.samples.apidemo.service.ChordApiDemoService"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.samsung.chord.samples.apidemo.service.ChordApiDemoService.SERVICE_START" />
+                <action android:name="com.samsung.chord.samples.apidemo.service.ChordApiDemoService.SERVICE_STOP" />
+                <action android:name="com.samsung.chord.samples.apidemo.service.ChordApiDemoService.SERVICE_BIND" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

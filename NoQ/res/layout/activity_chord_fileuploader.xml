@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chord_file_uploader_activity"
+    android:name="com.samsunghack.apps.android.noq.ChordFileUploaderActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout="@android:layout/list_content"
+    android:orientation="horizontal"  >
+
+    <fragment
+        android:id="@+id/interfacetest_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.samsunghack.chord.ifc.InterfaceTestFragment" />
+
+    <fragment
+        android:id="@+id/channeltest_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.samsunghack.chord.ifc.ChannelTestFragment" />
+
+    <fragment
+        android:id="@+id/datatest_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.samsunghack.chord.ifc.DataTestFragment" />
+    
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload File" />
+    
+</LinearLayout>
