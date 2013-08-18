@@ -63,7 +63,7 @@ public class NearbyActivity extends FragmentActivity implements
 	// Handles to UI widgets
 	private TextView mLatLng;
 	private TextView mAddress;
-	private ProgressBar mActivityIndicator;
+	private ProgressBar mProgressBar;
 	private TextView mConnectionState;
 	private TextView mConnectionStatus;
 	private ListView mRestaurantsListV;
@@ -126,8 +126,7 @@ public class NearbyActivity extends FragmentActivity implements
 		
 		// Get handles to the UI view objects
 		mLatLng = (TextView) findViewById(R.id.lat_lng);
-		mAddress = (TextView) findViewById(R.id.address);
-		mActivityIndicator = (ProgressBar) findViewById(R.id.address_progress);
+		mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 		mConnectionState = (TextView) findViewById(R.id.text_connection_state);
 		mConnectionStatus = (TextView) findViewById(R.id.text_connection_status);
 
@@ -247,13 +246,13 @@ public class NearbyActivity extends FragmentActivity implements
 			mEditor.commit();
 		}
 		
-//		String[] params = new String[3];
-//		params[0] = "37.37677240";
-//		params[1] = "-121.92164020";
-//		params[2] = "pizza";
-//		
-//		// Find Nearby Restaurants
-//		new FindNearbyRestaurantsTask().execute(params);
+		String[] params = new String[3];
+		params[0] = "37.37677240";
+		params[1] = "-121.92164020";
+		params[2] = "pizza";
+		
+		// Find Nearby Restaurants
+		new FindNearbyRestaurantsTask().execute(params);
 	}
 
 	/*
@@ -394,7 +393,7 @@ public class NearbyActivity extends FragmentActivity implements
 			Location currentLocation = mLocationClient.getLastLocation();
 
 			// Turn the indefinite activity indicator on
-			mActivityIndicator.setVisibility(View.VISIBLE);
+			mProgressBar.setVisibility(View.VISIBLE);
 
 			// Start the background task
 			(new NearbyActivity.GetAddressTask(this)).execute(currentLocation);
@@ -647,7 +646,7 @@ public class NearbyActivity extends FragmentActivity implements
 		protected void onPostExecute(String address) {
 
 			// Turn off the progress bar
-			mActivityIndicator.setVisibility(View.GONE);
+			mProgressBar.setVisibility(View.GONE);
 
 			// Set the address in the UI
 			mAddress.setText(address);
@@ -731,7 +730,7 @@ public class NearbyActivity extends FragmentActivity implements
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder holder;
 			if (convertView == null) {
-				convertView = mLayoutInflater.inflate(R.layout.list_item_googleplaces, parent, false);
+				convertView = mLayoutInflater.inflate(R.layout.list_item_nearby_restaurants, parent, false);
 
 				holder = new ViewHolder();
 
@@ -762,6 +761,11 @@ public class NearbyActivity extends FragmentActivity implements
 	private class FindNearbyRestaurantsTask extends AsyncTask<String, String, GooglePlacesData> {
 
 		protected GooglePlacesData doInBackground(String... params) {
+			// Turn the indefinite activity indicator on
+			// FIXME - Progress Bar is causing some issues
+//			if(mProgressBar!=null) {
+//				mProgressBar.setVisibility(View.VISIBLE);
+//			}
 			return GooglePlacesIfc.getPlaces(getApplicationContext(),params[0],params[1],params[2],"food");
 		}
 
@@ -773,6 +777,9 @@ public class NearbyActivity extends FragmentActivity implements
 			if(googlePlacesData!=null) {
 				displayGooglePlaces(googlePlacesData);
 			}
+//			if(mProgressBar!=null) {
+//				mProgressBar.setVisibility(View.GONE);
+//			}
 		}
 
 		protected void onPreExecute() {

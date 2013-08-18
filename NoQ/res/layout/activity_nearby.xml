@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/title_latlng"
-        android:textSize="20sp" />
+        android:text="@string/title_latlng" />
 
     <TextView
         android:id="@+id/lat_lng"
@@ -20,20 +19,10 @@
         android:layout_alignBaseline="@+id/label_lat_lng"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/label_lat_lng"
-        android:textIsSelectable="true"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/label_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/label_lat_lng"
-        android:text="@string/title_address"
-        android:textSize="20sp" />
+        android:textIsSelectable="true" />
 
     <ProgressBar
-        android:id="@+id/address_progress"
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/lat_lng"
@@ -42,22 +31,11 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/label_address"
-        android:layout_below="@+id/lat_lng"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/label_address"
-        android:textIsSelectable="true"
-        android:textSize="20sp" />
-
-    <TextView
         android:id="@+id/text_connection_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/address"
+        android:layout_below="@+id/lat_lng"
         android:text="@string/unknown"
         android:textIsSelectable="true" />
 
@@ -75,8 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/text_connection_state"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
         android:onClick="getLocation"
         android:text="@string/nearby_get_location" />
 
@@ -84,8 +61,8 @@
         android:id="@+id/start_updates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/get_location_button"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text_connection_state"
+        android:layout_toRightOf="@+id/get_location_button"
         android:onClick="startUpdates"
         android:text="@string/nearby_start_updates" />
 
@@ -93,9 +70,8 @@
         android:id="@+id/nearby_stop_updates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="false"
-        android:layout_below="@+id/start_updates"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text_connection_state"
+        android:layout_alignParentRight="true"
         android:gravity="center_vertical|center_horizontal"
         android:onClick="stopUpdates"
         android:text="@string/nearby_stop_updates" />
@@ -104,11 +80,7 @@
         android:id="@+id/search_field"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nearby_stop_updates"
-        android:layout_margin="10dip" >
-
-        <requestFocus>
-        </requestFocus>
+        android:layout_below="@id/nearby_stop_updates">
     </EditText>
 
     <Button
@@ -126,7 +98,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_button"
-        android:padding="10dip" >
+        android:padding="5dip" >
     </ListView>
 
 </RelativeLayout>
